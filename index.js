@@ -46,24 +46,28 @@ async function deletePerson(_id) {
   let deleted = await people.delete(found._id);
 }
 
-updatePerson(
-  {
-    firstName: 'Sarah',
-    lastName: 'Smalls',
-  }._id,
-  { lastName: 'Willis' }
-).then(() => {
-  console.log('i\'m here!');
-  mongoose.connection.close();
-});
+async function getPeople(obj) {
+  let found = await people.getFromField(obj);
+  console.log('FOUND EM: ', found);
+}
 
-// makePerson({
-//   firstName: 'Sarah',
-//   lastName: 'Smalls',
-// }).then(() => {
+// updatePerson(
+//   {
+//     firstName: 'Sarah',
+//     lastName: 'Smalls',
+//   }._id,
+//   { lastName: 'Willis' }
+// ).then(() => {
 //   console.log('i\'m here!');
 //   mongoose.connection.close();
 // });
+
+getPeople({
+  firstName: 'Sarah',
+}).then(() => {
+  console.log('i\'m here!');
+  mongoose.connection.close();
+});
 
 // mongoose.connection.close();
 

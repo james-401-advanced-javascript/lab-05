@@ -1,7 +1,7 @@
-'use strict';
+"use strict";
 
-const mongoose = require('mongoose');
-const schema = require('./people-schema');
+const mongoose = require("mongoose");
+const schema = require("./people-schema");
 
 class Model {
   constructor(schema) {
@@ -48,8 +48,8 @@ class Model {
     //   return data;
     // })
     // .catch(e => e);
-    console.log('TING', Object.keys(updated));
-    console.log('TING', updated);
+    console.log("TING", Object.keys(updated));
+    console.log("TING", updated);
     return updated;
   }
 
@@ -60,6 +60,15 @@ class Model {
     // [async] write the new (smaller) this.database to the file
     // look up findByIdAndDelete
     return this.schema.findByIdAndDelete(_id);
+  }
+
+  //   getFromField, which takes in an object parameter and returns the search result for objects that match the fields in the object parameter
+  // Hint: You probably want to use the find() method
+
+  getFromField(obj) {
+    // let query = this.getByQuery(obj);
+    let query = schema.find(obj);
+    return query;
   }
 }
 
