@@ -1,5 +1,5 @@
 {
-  "name": "Lab-05",
+  "name": "lab-05",
   "version": "1.0.0",
   "description": "Lab-05, performing CRUD operations on a NoSQL db using MongoDB",
   "main": "players-schema.js",

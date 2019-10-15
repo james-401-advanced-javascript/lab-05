@@ -1,11 +1,12 @@
 'use strict';
 
 const mongoose = require('mongoose');
+mongoose.set('useFindAndModify', false);
 const db = 'mongodb://127.0.0.1:27017/app';
 
 const configs = {
   useNewUrlParser: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
 };
 
 mongoose.connect(db, configs);
@@ -16,20 +17,53 @@ const People = require('./models/people.js');
 let people = new People();
 
 async function makePerson(person) {
-  //let made = await people.create(person);
-
+  let made = await people.create(person);
   let found = await people.getByQuery(person);
+
   console.log(found);
   return found;
 }
 
-makePerson({
-  firstName: 'Sarah',
-  lastName: 'Smalls'
-}).then(() => {
-  console.log("i'm here!");
+async function updatePerson(_id, newPersonData) {
+  // call people.update
+  // UNLESS
+  // did this person change teams?
+  // if they did
+  // you need to verify the team they are now in exists
+  // and you need to verify the team they left still has some people
+  let found = await people.get(_id);
+  let updated = await people.update(_id, newPersonData);
+  console.log('FOUND: ', found);
+  console.log('UPDATED: ', updated);
+}
+
+async function deletePerson(_id) {
+  // if you delete a person and their team
+  // no longer has people
+  // you should delete the team!
+  let found = await people.get(_id);
+  console.log(found);
+  let deleted = await people.delete(found._id);
+}
+
+updatePerson(
+  {
+    firstName: 'Sarah',
+    lastName: 'Smalls',
+  }._id,
+  { lastName: 'Willis' }
+).then(() => {
+  console.log('i\'m here!');
   mongoose.connection.close();
 });
+
+// makePerson({
+//   firstName: 'Sarah',
+//   lastName: 'Smalls',
+// }).then(() => {
+//   console.log('i\'m here!');
+//   mongoose.connection.close();
+// });
 
 // mongoose.connection.close();
 

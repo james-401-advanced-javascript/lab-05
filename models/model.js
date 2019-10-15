@@ -1,5 +1,8 @@
 'use strict';
 
+const mongoose = require('mongoose');
+const schema = require('./people-schema');
+
 class Model {
   constructor(schema) {
     this.schema = schema;
@@ -27,21 +30,36 @@ class Model {
 
   // CRUD: update - you usually only update something that exists
   // if something exists, it has an id
-  update(id, item) {
+  update(_id, item) {
     // change a piece of the data
     // change data where data.id === id
     // [async] write data to file
     // make sure your change is in this.database
     // write this.database to file
     // look up findByIdAndUpdate
+    let updated = schema.findByIdAndUpdate(_id, { ...item }, (err, data) => {
+      if (err) console.error(err);
+      console.log(data);
+      return data;
+    });
+
+    // .then(data => {
+    //   console.log(data);
+    //   return data;
+    // })
+    // .catch(e => e);
+    console.log('TING', Object.keys(updated));
+    console.log('TING', updated);
+    return updated;
   }
 
   // CRUD: delete
-  delete(id) {
+  delete(_id) {
     // find this.database object where object.id === id (forEach??)
     // remove that object (map??)
     // [async] write the new (smaller) this.database to the file
     // look up findByIdAndDelete
+    return this.schema.findByIdAndDelete(_id);
   }
 }
 
