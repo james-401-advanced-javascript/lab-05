@@ -51,6 +51,11 @@ async function getPeople(obj) {
   console.log('FOUND EM: ', found);
 }
 
+async function countPeople(obj) {
+  let found = await people.count(obj);
+  console.log('COUNT EM: ', found);
+}
+
 // updatePerson(
 //   {
 //     firstName: 'Sarah',
@@ -62,8 +67,8 @@ async function getPeople(obj) {
 //   mongoose.connection.close();
 // });
 
-getPeople({
-  firstName: 'Sarah',
+countPeople({
+  lastName: 'Willis',
 }).then(() => {
   console.log('i\'m here!');
   mongoose.connection.close();

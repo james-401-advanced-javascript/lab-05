@@ -1,7 +1,7 @@
-"use strict";
+'use strict';
 
-const mongoose = require("mongoose");
-const schema = require("./people-schema");
+const mongoose = require('mongoose');
+const schema = require('./people-schema');
 
 class Model {
   constructor(schema) {
@@ -48,8 +48,8 @@ class Model {
     //   return data;
     // })
     // .catch(e => e);
-    console.log("TING", Object.keys(updated));
-    console.log("TING", updated);
+    console.log('TING', Object.keys(updated));
+    console.log('TING', updated);
     return updated;
   }
 
@@ -62,13 +62,17 @@ class Model {
     return this.schema.findByIdAndDelete(_id);
   }
 
-  //   getFromField, which takes in an object parameter and returns the search result for objects that match the fields in the object parameter
+  // takes in an object parameter and return the search result for objects that match the fields in the object parameter
   // Hint: You probably want to use the find() method
-
   getFromField(obj) {
     // let query = this.getByQuery(obj);
-    let query = schema.find(obj);
-    return query;
+    return schema.find(obj);
+  }
+
+  // take in an object parameter, and search the database for items that match the object paramter.
+  // return the number of items that match.
+  count(obj) {
+    return schema.countDocuments(obj);
   }
 }
 
