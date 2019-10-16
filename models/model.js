@@ -1,6 +1,5 @@
 'use strict';
 
-const mongoose = require('mongoose');
 const schema = require('./people-schema');
 
 class Model {
