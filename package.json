@@ -1,0 +1,27 @@
+{
+  "name": "lab-05",
+  "version": "1.0.0",
+  "description": "Lab-05, performing CRUD operations on a NoSQL db using MongoDB",
+  "main": "players-schema.js",
+  "scripts": {
+    "start": "node index.js",
+    "lint": "eslint '**/*.js'",
+    "test": "jest --verbose",
+    "test-watch": "jest --watchAll --verbose"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "keywords": [],
+  "author": "James Dunn",
+  "license": "ISC",
+  "dependencies": {
+    "eslint": "^6.5.1",
+    "jest": "^24.8.0",
+    "jsdoc": "^3.6.3",
+    "mongodb": "^3.3.2",
+    "mongodb-memory-server": "^5.2.8",
+    "mongoose": "^5.7.4",
+    "supertest": "^4.0.2"
+  }
+}
