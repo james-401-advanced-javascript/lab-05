@@ -55,4 +55,4 @@
 
 #### UML
 
-![UML](./images/lab-03.jpg)
+![UML](./images/lab-05.jpg)
