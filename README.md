@@ -16,17 +16,31 @@
 
 ### Modules
 
-#### `module.js`
+#### `model.js`
+
+#### `people.js`
+
+#### `teams.js`
 
 ##### Exported Values and Methods
 
-###### `function(val)`
+###### `create(item)`
+
+###### `get(_id)`
+
+###### `getByQuery(query)`
+
+###### `update(_id, item)`
+
+###### `getFromField(_id)`
+
+###### `count(obj)`
 
 ### Setup
 
 #### `.env` requirements
 
-- `PORT` - 3000
+- `PORT` - 27017
 
 #### Running the app
 
@@ -37,6 +51,7 @@
 
 - How do you run tests?
 - `npm test`
+- `npm start`
 
 #### UML
 
