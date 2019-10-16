@@ -62,20 +62,7 @@ class Model {
     // make sure your change is in this.database
     // write this.database to file
     // look up findByIdAndUpdate
-    let updated = schema.findByIdAndUpdate(_id, { ...item }, (err, data) => {
-      if (err) console.error(err);
-      console.log(data);
-      return data;
-    });
-
-    // .then(data => {
-    //   console.log(data);
-    //   return data;
-    // })
-    // .catch(e => e);
-    console.log('TING', Object.keys(updated));
-    console.log('TING', updated);
-    return updated;
+    return this.schema.findByIdAndUpdate(_id, item);
   }
 
   // CRUD: delete

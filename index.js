@@ -32,28 +32,6 @@ async function makeTeam(team) {
   return found;
 }
 
-async function updatePerson(_id, newPersonData) {
-  // call people.update
-  // UNLESS
-  // did this person change teams?
-  // if they did
-  // you need to verify the team they are now in exists
-  // and you need to verify the team they left still has some people
-  let found = await people.get(_id);
-  let updated = await people.update(_id, newPersonData);
-  console.log('FOUND: ', found);
-  console.log('UPDATED: ', updated);
-}
-
-async function deletePerson(_id) {
-  // if you delete a person and their team
-  // no longer has people
-  // you should delete the team!
-  let found = await people.get(_id);
-  console.log(found);
-  let deleted = await people.delete(found._id);
-}
-
 async function getPeople(obj) {
   let found = await people.getFromField(obj);
   console.log('FOUND EM: ', found);
@@ -64,23 +42,22 @@ async function countPeople(obj) {
   console.log('COUNT EM: ', found);
 }
 
-// updatePerson(
-//   {
-//     firstName: 'Sarah',
-//     lastName: 'Smalls',
-//   }._id,
-//   { lastName: 'Willis' }
-// ).then(() => {
-//   console.log('i\'m here!');
-//   mongoose.connection.close();
-// });
-
-makeTeam({
-  name: 'Yellow Rhino',
-  color: 'yellow',
+makePerson({
+  firstName: 'James',
+  lastName: 'Dunn',
+  birthday: new Date('5/10/2020'),
+  likes: 'dogs',
 }).then(() => {
+  console.log('i\'m here!');
   mongoose.connection.close();
 });
+
+// makeTeam({
+//   name: 'Yellow Rhino',
+//   color: 'yellow',
+// }).then(() => {
+//   mongoose.connection.close();
+// });
 
 // countPeople({}).then(() => {
 //   mongoose.connection.close();
